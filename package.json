@@ -1,0 +1,9 @@
+{
+  "name": "ranobehub-tts-extension",
+  "private": true,
+  "description": "Chrome MV3 extension: RanobeHub chapter narration player with paragraph highlighting.",
+  "scripts": {
+    "test": "node tests/cloud_protocol.test.js && node tests/settings.test.js && node tests/matcher.test.js",
+    "check": "for f in background.js lib/*.js content/*.js popup/*.js; do node --check \"$f\" || exit 1; done"
+  }
+}

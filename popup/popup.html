@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Озвучка RanobeHub</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>Озвучка RanobeHub</h1>
+    <div class="sub">озвучка главы с подсветкой текста</div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button type="button" class="tab on" data-tab="main" role="tab">Озвучка</button>
+    <button type="button" class="tab" data-tab="settings" role="tab">Настройки</button>
+  </nav>
+
+  <!-- ============ Вкладка «Озвучка» ============ -->
+  <div class="pane" id="tab-main">
+    <section class="box">
+      <div class="box-title">Текущая глава</div>
+      <div id="chapterInfo" class="muted">Проверяю…</div>
+      <div class="row">
+        <button id="check" class="primary">Проверить заново</button>
+      </div>
+      <div id="checkStatus" class="status"></div>
+    </section>
+  </div>
+
+  <!-- ============ Вкладка «Настройки» ============ -->
+  <div class="pane hidden" id="tab-settings">
+    <section class="box">
+      <div class="box-title">Воспроизведение</div>
+      <label class="check"><input type="checkbox" id="autoLoad"> Искать озвучку сразу при открытии главы</label>
+      <label class="check"><input type="checkbox" id="autoNext"> Включать следующую главу, когда эта закончится</label>
+    </section>
+
+    <section class="box">
+      <div class="box-title">Прокрутка текста</div>
+      <label class="check"><input type="checkbox" id="magnet"> Прокручивать страницу вслед за озвучкой</label>
+      <div class="field" id="eyeField">
+        <span class="field-label">Где держать звучащий абзац</span>
+        <div class="seg" id="eyeSeg" role="radiogroup" aria-label="Положение звучащего абзаца на экране">
+          <button type="button" role="radio" data-v="15"><i class="mini"><b style="top:14%"></b></i><span>Вверху</span></button>
+          <button type="button" role="radio" data-v="34"><i class="mini"><b style="top:34%"></b></i><span>Выше центра</span></button>
+          <button type="button" role="radio" data-v="50"><i class="mini"><b style="top:50%"></b></i><span>По центру</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="box">
+      <div class="box-title">Поиск по тексту</div>
+      <label class="check"><input type="checkbox" id="pickAfterJump"> Выключать поиск после выбора абзаца</label>
+      <div class="hint">Кнопка «Найти по тексту» на панели: кликните по любому абзацу, и озвучка начнётся с него.</div>
+    </section>
+
+    <section class="box">
+      <div class="box-title">Панель на странице</div>
+      <label class="check"><input type="checkbox" id="hideIfNone"> Скрывать панель, если у главы нет озвучки</label>
+      <div class="hint">Панель можно перетащить за заголовок в любое место страницы — она запомнит, где стоит.</div>
+      <div class="row">
+        <button id="resetPos">Вернуть панель на место</button>
+      </div>
+    </section>
+
+    <div id="optStatus" class="status"></div>
+
+    <footer class="foot">
+      <span id="verText">Версия</span>
+      <a href="#" id="devToggle">Для разработчика</a>
+    </footer>
+
+    <!-- Технический раздел: обычному пользователю он не нужен и закрыт по умолчанию -->
+    <section class="box hidden" id="devBox">
+      <div class="box-title">Для разработчика</div>
+      <pre id="devInfo" class="log small"></pre>
+      <div class="box-title">Журнал</div>
+      <pre id="logView" class="log">Журнал пуст.</pre>
+      <div class="row">
+        <button id="logRefresh">Обновить</button>
+        <button id="logCopy">Копировать</button>
+        <button id="logClear">Очистить</button>
+      </div>
+      <div id="logStatus" class="status"></div>
+    </section>
+  </div>
+
+  <script src="../lib/settings.js"></script>
+  <script src="../lib/cloud-config.js"></script>
+  <script src="../lib/cloud.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
